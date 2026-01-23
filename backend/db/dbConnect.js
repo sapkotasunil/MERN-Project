@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const dbConnect = async () => {
   try {
-    const conn = await mongoose.connect("mongodb://localhost:27017/Batch12");
+    const conn = await mongoose.connect(process.env.MONGODB_URI);
     console.log("connected DB to ", conn.connection.host);
   } catch (err) {
     console.log("Error connecting to DB:", err.message);
