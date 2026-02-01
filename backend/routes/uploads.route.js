@@ -3,10 +3,11 @@ import multer from "multer";
 import path from "path";
 import { v2 as cloudinary } from "cloudinary";
 
+console.log(process.env.CLOUDINARY_API_KEY);
 cloudinary.config({
-  cloud_name: process.env.CLODINARY_API_NAME,
-  api_key: CLODINARY_API_KEY,
-  api_secret: CLODINARY_API_SECRET,
+  cloud_name: process.env.CLOUDINARY_API_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 const storage = multer.diskStorage({
