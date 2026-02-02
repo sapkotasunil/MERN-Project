@@ -28,4 +28,22 @@ const login = async (req, res) => {
   });
 };
 
-export { register, login };
+const getProfile = (req, res) => {
+  const user = req.user;
+  res.status(200).send(user);
+};
+
+const logout = async (req, res) => {
+  res.clearCookie("jwt");
+  res.send({ message: "User logout sucessfully !!" });
+};
+
+const userUpdate = async (req, res) => {
+  const { name, email, password } = req.body;
+  const user = await User.findById(req.user._id);
+  user.name = name || user.name;
+  user.email = email || user.email;
+  if (password) user.password = password;
+};
+
+export { register, login, getProfile, logout, userUpdate };
